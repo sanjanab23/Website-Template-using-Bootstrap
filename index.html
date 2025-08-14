@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Full Website with Swipe Gallery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff7f50;
+    }
+
+    header {
+      background: url('https://picsum.photos/1600/900?random=1') no-repeat center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+
+    header a {
+      background: #ff7f50;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: #e5673d;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* About Us */
+    #about {
+      text-align: center;
+    }
+
+    #about h2 {
+      margin-bottom: 20px;
+    }
+
+    /* Features */
+    #features {
+      overflow: hidden;
+      background: #fff;
+    }
+
+    #features h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .features-container {
+      display: flex;
+      animation: scrollFeatures 20s linear infinite;
+    }
+
+    .feature {
+      min-width: 250px;
+      background: #ff7f50;
+      color: white;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    #features h3 {
+      text-align: center;
+      margin-bottom: 1px;
+    }
+
+    @keyframes scrollFeatures {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* Gallery */
+    #gallery {
+      text-align: center;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .gallery-card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      cursor: pointer;
+    }
+
+    /* Contact */
+    #contact {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    #contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    #contact input, #contact textarea {
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    #contact button {
+      padding: 10px;
+      background: #ff7f50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    #contact button:hover {
+      background: #e5673d;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">MyWebsite</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>Welcome to Our Website</h1>
+    <p>We create amazing experiences for our users.</p>
+    <a href="#about">Learn More</a>
+  </header>
+
+
+<!-- About Us Section -->
+<section id="about" class="about-section" style="padding: 60px 20px; background: #f8f9fa;">
+  <div style="max-width: 1100px; margin: auto; display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+    
+    <!-- Image -->
+    <div style="flex: 1; min-width: 300px;">
+      <img src="https://picsum.photos/500/350" alt="About Us" style="width: 100%; border-radius: 10px; box-shadow: 0px 4px 15px rgba(0,0,0,0.1);">
+    </div>
+
+    <!-- Content -->
+    <div style="flex: 1; min-width: 300px;">
+      <h2 style="font-size: 2rem; margin-bottom: 15px; color: #333;">About Us</h2>
+      <p style="color: #555; line-height: 1.6; font-size: 1rem;">
+        We are a passionate team creating engaging and user-friendly experiences.  
+        Our goal is to make every interaction simple, smooth, and delightful.
+      </p>
+      <p style="color: #555; line-height: 1.6; font-size: 1rem;">
+        With a focus on quality and creativity, we bring ideas to life with precision and style.
+      </p>
+    </div>
+  </div>
+</section>
+
+  
+
+
+  <!-- Features -->
+  <section id="features">
+    <h2>Our Features</h2>
+    <div class="features-container">
+      <div class="feature">Fast Performance</div>
+      <div class="feature">Responsive Design</div>
+      <div class="feature">SEO Optimized</div>
+      <div class="feature">User Friendly</div>
+      <div class="feature">Secure</div>
+      <div class="feature">Customizable</div>
+      <!-- Duplicate for infinite loop effect -->
+      <div class="feature">Fast Performance</div>
+      <div class="feature">Responsive Design</div>
+      <div class="feature">SEO Optimized</div>
+      <div class="feature">User Friendly</div>
+      <div class="feature">Secure</div>
+      <div class="feature">Customizable</div>
+    </div>
+  </section>
+
+    <!-- Testimonials -->
+  <section id="testimonials" style="background: #fff; padding: 60px 20px; text-align: center;">
+    <h2 style="margin-bottom: 40px;">What Our Clients Say</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1100px; margin: auto;">
+      
+      <div style="flex: 1 1 300px; background: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <img src="https://picsum.photos/80?random=11" alt="Client 1" style="border-radius: 50%; margin-bottom: 15px;">
+        <p style="font-style: italic; color: #555;">"They exceeded our expectations! The website is beautiful, fast, and easy to use."</p>
+        <h4 style="margin-top: 10px; color: #333;">Sarah Johnson</h4>
+      </div>
+
+      <div style="flex: 1 1 300px; background: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <img src="https://picsum.photos/80?random=12" alt="Client 2" style="border-radius: 50%; margin-bottom: 15px;">
+        <p style="font-style: italic; color: #555;">"A truly seamless experience from start to finish. Highly recommend their services!"</p>
+        <h4 style="margin-top: 10px; color: #333;">Michael Lee</h4>
+      </div>
+
+      <div style="flex: 1 1 300px; background: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <img src="https://picsum.photos/80?random=13" alt="Client 3" style="border-radius: 50%; margin-bottom: 15px;">
+        <p style="font-style: italic; color: #555;">"The design and functionality blew us away. Everything works flawlessly."</p>
+        <h4 style="margin-top: 10px; color: #333;">Alicia Brown</h4>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <h3>Click on the image to view more</h3>
+    <div class="gallery-container" id="galleryContainer">
+      <div class="gallery-card" style="background-image: url('https://picsum.photos/id/1011/300/400');"></div>
+      <div class="gallery-card" style="background-image: url('https://picsum.photos/id/1012/300/400');"></div>
+      <div class="gallery-card" style="background-image: url('https://picsum.photos/id/1013/300/400');"></div>
+      <div class="gallery-card" style="background-image: url('https://picsum.photos/id/1014/300/400');"></div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 MyWebsite. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Gallery Click to Swipe
+    const galleryContainer = document.getElementById('galleryContainer');
+    let cards = Array.from(galleryContainer.children);
+
+    function bringNextCardToFront() {
+      const firstCard = cards.shift();
+      firstCard.style.opacity = '0';
+      firstCard.style.transform = 'translateX(-100%)';
+
+      setTimeout(() => {
+        firstCard.style.transition = 'none';
+        firstCard.style.transform = 'translateX(0)';
+        firstCard.style.opacity = '1';
+        galleryContainer.appendChild(firstCard);
+        cards.push(firstCard);
+        firstCard.offsetHeight; // reflow
+        firstCard.style.transition = '';
+      }, 400);
+    }
+
+    galleryContainer.addEventListener('click', bringNextCardToFront);
+
+    // Lazy loading images for performance
+    document.querySelectorAll('img').forEach(img => {
+      img.setAttribute('loading', 'lazy');
+    });
+  </script>
+
+</body>
+</html>
